@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  scraper-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - scrape_net
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    volumes:
+      - /tmp/app
+    restart: unless-stopped
+#  mysqldb:
+#    image: mysql:latest
+#    volumes:
+#      - mysql_scraper_data:/var/lib/mysql
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: ${mysql_root_pass}
+#      MYSQL_DATABASE: ${mysql_db}
+#      MYSQL_USER: ${mysql_user}
+#      MYSQL_PASSWORD: ${mysql_password}
+#    ports:
+#      - "${mysql_portmap}:3306"
+#    networks:
+#      - scrape_net
+networks:
+  scrape_net:
+    external: true
+#volumes:
+#  mysql_scraper_data:

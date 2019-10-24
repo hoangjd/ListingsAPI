@@ -1,27 +1,25 @@
 package com.joe.scraper.zillowScraper.listings;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="listings_tb")
 public class Listing {
+
     @Id
     int id;
     int price;
     String street;
     String city;
     String state;
-    int zipcode;
+    @Column(name="zip_code")
+    int zipCode;
     int sqft;
     int bdr;
     int bath;
+    @Column(name = "date_gathered")
     Date dateGathered;
-
-    public Listing(){
-    }
 
     public int getId() {
         return id;
@@ -64,11 +62,11 @@ public class Listing {
     }
 
     public int getZipcode() {
-        return zipcode;
+        return zipCode;
     }
 
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
+    public void setZipcode(int zipCode) {
+        this.zipCode = zipCode;
     }
 
     public int getSqft() {

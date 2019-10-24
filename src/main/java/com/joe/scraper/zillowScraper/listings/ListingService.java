@@ -13,7 +13,7 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepository;
 
-    public List<Listing> getAllListings(){
+    public List<Listing> getAllListings() {
         List<Listing> listings = new ArrayList<>();
         listingRepository.findAll().forEach(listings::add);
         System.out.println(listings);
